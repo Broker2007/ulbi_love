@@ -1,6 +1,6 @@
 /* eslint-disable i18next/no-literal-string */
 import { useState } from 'react';
-import { classNames } from 'shared/lib/ClassNames/classNames';
+import { classNames } from 'shared/lib/classNames/classNames';
 import { LangSwitcher } from 'shared/ui/LangSwitcher';
 import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher';
 import cls from './SideBar.module.scss';
@@ -18,9 +18,12 @@ const SideBar = ({ className }:SideBarProps) => {
     };
 
     return (
-        <div className={classNames(cls.SideBar, { [cls.collapsed]: collapsed }, [className])}>
+        <div
+            data-testid="sidebar"
+            className={classNames(cls.SideBar, { [cls.collapsed]: collapsed }, [className])}
+        >
 
-            <button type="button" onClick={onToggle}>Toggle</button>
+            <button data-testid="sidebar-toggle" type="button" onClick={onToggle}>Toggle</button>
             <div className={cls.switchers}>
                 <ThemeSwitcher />
                 <LangSwitcher className={cls.lang} />
