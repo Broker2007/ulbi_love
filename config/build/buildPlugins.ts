@@ -9,9 +9,6 @@ export function buildPlugins({ paths, isDev }:BuildOptions):webpack.WebpackPlugi
         new HtmlWebpackPlugin({
             template: paths.html,
         }),
-        new BundleAnalyzerPlugin({
-            openAnalyzer: false,
-        }),
         new webpack.ProgressPlugin(),
         new MiniCssExtractPlugin({
             filename: 'css/[name].[contenthash:8].css',
