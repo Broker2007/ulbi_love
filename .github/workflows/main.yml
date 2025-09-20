@@ -1,30 +1,41 @@
-name: linting, testing, buiding
-on: 
-    push:
-        branches: [ main ]
-    pull_request: 
-        branches: [ main ]
+name: Linting, Testing, Building
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
 jobs:
   pipeline:
     runs-on: ubuntu-latest
     strategy:
-        matrix:
-            node-version: [18.x]
+      matrix:
+        node-version: [18.x] # Можно использовать более свежие версии, например [20.x]
 
     steps:
-        - uses: action/checkout@v2
-        - name: Starting Node.js ${{ matrix.node-version }}
-          uses: action/setup-node@v1
-          with:
-            node-version: ${{ matrix.node-version }} 
-        - name: install modules
-          run: npm install
-        - name: build project production
-          run: npm run build:prod
-        - name: linting typescript
-          run: npm run lint:ts
-        - name: linting css
-          run: npm run lint:scss
-        - name: unit testing
-          run: npm run test:unit
-                
+      # КОРРЕКТНАЯ ссылка на checkout. Добавлен владелец 'actions/'
+      - name: Checkout code
+        uses: actions/checkout@v4 # Используйте актуальную v4 вместо v2
+
+      # КОРРЕКТНАЯ ссылка на setup-node. Добавлен владелец 'actions/'
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4 # Используйте актуальную v4 вместо v1
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm' # Кэширование зависимостей для ускорения сборки
+
+      - name: Install dependencies
+        run: npm ci # Лучше использовать 'ci' для продакшн-сборок, чем 'install'
+
+      - name: Build project (production)
+        run: npm run build:prod
+
+      - name: Linting TypeScript
+        run: npm run lint:ts
+
+      - name: Linting CSS
+        run: npm run lint:scss
+
+      - name: Unit testing
+        run: npm run test:unit
