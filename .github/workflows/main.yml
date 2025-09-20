@@ -26,8 +26,15 @@ jobs:
           cache: 'npm' # Кэширование зависимостей для ускорения сборки
 
       - name: Install dependencies
-        run: npm ci # Лучше использовать 'ci' для продакшн-сборок, чем 'install'
-
+        run: npm ci 
+      - name: Debug project structure
+        run: |
+            echo "Checking if classNames exists:"
+            find . -name "classNames.*" -type f
+            echo "Shared folder structure:"
+            ls -la src/shared/
+            ls -la src/shared/lib/
+            ls -la src/shared/lib/classNames/
       - name: Build project (production)
         run: npm run build:prod
 
