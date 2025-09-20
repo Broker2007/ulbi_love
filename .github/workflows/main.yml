@@ -34,7 +34,7 @@ jobs:
             echo "Shared folder structure:"
             ls -la src/shared/
             ls -la src/shared/lib/
-            ls -la src/shared/lib/classNames/
+            ls -la src/shared/lib/ClassNames/
       - name: Build project (production)
         run: npm run build:prod
 
