@@ -25,7 +25,6 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
-    "@loki/target-chrome-core": "^0.35.0",
     "@storybook/addon-actions": "6.4.19",
     "@storybook/addon-essentials": "6.4.19",
     "@storybook/addon-interactions": "6.4.19",
@@ -89,21 +88,14 @@
   "loki": {
     "configurations": {
       "chrome.laptop": {
-        "target": "chrome.app",
+        "target": "chrome.docker",
         "width": 1366,
         "height": 768,
         "deviceScaleFactor": 1,
-        "mobile": false,
-        "chromeFlags": [
-          "--headless",
-          "--no-sandbox",
-          "--disable-setuid-sandbox",
-          "--remote-debugging-address=0.0.0.0", 
-          "--remote-debugging-port=9222"        
-      ]
+        "mobile": false
       },
       "chrome.iphone7": {
-        "target": "chrome.app",
+        "target": "chrome.docker",
         "preset": "iPhone 7"
       }
     }
