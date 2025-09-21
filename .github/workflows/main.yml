@@ -27,14 +27,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci 
-      - name: Debug project structure
-        run: |
-            echo "Checking if classNames exists:"
-            find . -name "classNames.*" -type f
-            echo "Shared folder structure:"
-            ls -la src/shared/
-            ls -la src/shared/lib/
-            ls -la src/shared/lib/ClassNames/
       - name: Build project (production)
         run: npm run build:prod
 
@@ -48,5 +40,7 @@ jobs:
         run: npm run test:unit
       - name: build storybook
         run: npm run storybook:build
+      - name: loki test
+        run: npm run test:ui  
       - name: screenshot testing
         run: npm run test:ui:ci
