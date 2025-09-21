@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import Button, { ButtonTheme } from './Button';
 
-
 describe('button', () => {
     test('with only first param', () => {
         render(<Button>Test</Button>);
