@@ -11,16 +11,16 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18.x] # Можно использовать более свежие версии, например [20.x]
+        node-version: [18.x]
 
     steps:
-      # КОРРЕКТНАЯ ссылка на checkout. Добавлен владелец 'actions/'
+      
       - name: Checkout code
-        uses: actions/checkout@v4 # Используйте актуальную v4 вместо v2
+        uses: actions/checkout@v4
 
-      # КОРРЕКТНАЯ ссылка на setup-node. Добавлен владелец 'actions/'
+      
       - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4 # Используйте актуальную v4 вместо v1
+        uses: actions/setup-node@v4 
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm' # Кэширование зависимостей для ускорения сборки
@@ -29,16 +29,18 @@ jobs:
         run: npm ci 
       - name: Build project (production)
         run: npm run build:prod
-
+        if: always()
       - name: Linting TypeScript
         run: npm run lint:ts
-
+        if: always()
       - name: Linting CSS
         run: npm run lint:scss
 
       - name: Unit testing
+        if: always()
         run: npm run test:unit
       - name: build storybook
+        if: always()
         run: npm run storybook:build
     #   - name: loki test
     #     run: npm run test:ui  
