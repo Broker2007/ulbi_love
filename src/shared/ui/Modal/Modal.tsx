@@ -1,3 +1,4 @@
+import { useTheme } from 'app/providers/ThemeProvider';
 import React, {
     ReactNode, useCallback, useEffect, useLayoutEffect, useRef, useState,
 } from 'react';
@@ -19,8 +20,7 @@ const Modal = (props:ModalProps) => {
         className, children, isOpen, onClose,
     } = props;
     const [isClosing, setIsClosing] = useState(false);
-    const [isMounted, setIsMounted] = useState(false);
-    const [targetElement, setTargetElement] = useState<HTMLElement | null>(null);
+    const { theme } = useTheme();
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
     const closeHandler = useCallback(() => {
@@ -40,16 +40,6 @@ const Modal = (props:ModalProps) => {
     const onContentClick = (e:React.MouseEvent) => {
         e.stopPropagation();
     };
-    useLayoutEffect(() => {
-        if (isOpen) {
-            setIsMounted(true);
-            const el = document.getElementById('main');
-            setTargetElement(el);
-        } else {
-            setIsMounted(false);
-            setTargetElement(null);
-        }
-    }, [isOpen]);
     useEffect(() => {
         if (isOpen) {
             window.addEventListener('keydown', onKeyDown);
@@ -64,12 +54,9 @@ const Modal = (props:ModalProps) => {
         [cls.opened]: isOpen,
         [cls.isClosing]: isClosing,
     };
-    if (!isOpen && !isMounted) {
-        return null;
-    }
     return (
-        <Portal element={targetElement || document.body}>
-            <div className={classNames(cls.Modal, mods, [className])}>
+        <Portal>
+            <div className={classNames(cls.Modal, mods, [className, theme])}>
                 <div className={cls.overlay} onClick={closeHandler}>
                     <div className={cls.content} onClick={onContentClick}>
                         {children}
