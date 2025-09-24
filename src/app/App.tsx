@@ -1,12 +1,11 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable i18next/no-literal-string */
 
-import { classNames } from 'shared/lib/ClassNames/classNames';
 import { useTheme } from 'app/providers/ThemeProvider';
 import { Navbar } from 'widgets/Navbar';
 import { SideBar } from 'widgets/SideBar';
-import { Suspense, useState } from 'react';
-import Modal from 'shared/ui/Modal/Modal';
+import { Suspense } from 'react';
+import { classNames } from 'shared/lib/classNames/classNames';
 import { AppRouter } from './providers/router';
 
 const App = () => {
