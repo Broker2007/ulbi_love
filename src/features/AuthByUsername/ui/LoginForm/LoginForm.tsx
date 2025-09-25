@@ -13,7 +13,6 @@ const LoginForm = ({ className }:LoginFormProps) => {
     return (
         <div className={classNames(cls.LoginForm, {}, [className])}>
             <Input
-            
                 type="text"
                 className={cls.input}
                 placeholder={t('Введите username')}
