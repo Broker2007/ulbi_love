@@ -22,7 +22,7 @@
 .outline {
     border: 1px solid var(--primary-color);
     color: var(--primary-color);
-    background-color: none;
+    background-color: transparent;
 }
 
 .background {
@@ -68,4 +68,8 @@
 
 .size_m {
     font: var(--font-m);
+}
+
+.disabled {
+    opacity: 0.5;
 }

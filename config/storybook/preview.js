@@ -1,6 +1,7 @@
 import { addDecorator } from '@storybook/react';
 import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator/StyleDecorator';
 import { RouteDecorator } from '../../src/shared/config/storybook/RouteDecorator/RouteDecorator';
+// eslint-disable-next-line max-len
 import '../../src/app/styles/index.scss';
 import { Theme } from '../../src/app/providers/ThemeProvider';
 
