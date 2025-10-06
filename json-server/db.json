@@ -25,5 +25,14 @@
       "password": "123"
     }
   ],
-  "profile": { "name": "typicode" }
+  "profile": { 
+    "first": "Павел",
+    "lastname": "fed",
+    "age": 18,
+    "currency": "RUB",
+    "country": "Russian",
+    "city": "SPb",
+    "username": "admin",
+    "avatar": "https://static3.go3.tv/scale/go3/webuploads/rest/upload/vod/5531595/images/20222409?dsth=412&dstw=412&srcmode=3&quality=65&type=1&srcx=1&srcy=1&srcw=1%2F1&srch=1%2F1"
+   }
 }
