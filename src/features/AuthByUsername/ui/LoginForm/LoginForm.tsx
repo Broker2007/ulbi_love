@@ -30,7 +30,6 @@ const LoginForm = memo(({ className }:LoginFormProps) => {
     const isLoading = useSelector(getLoginIsLoading);
     const error = useSelector(getLoginError);
     const username = useSelector(getLoginUsername);
-
     const onChangeUsername = useCallback((value:string) => {
         dispatch(loginActions.setUsername(value));
     }, [dispatch]);
